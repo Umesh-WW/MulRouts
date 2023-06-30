@@ -4,6 +4,7 @@ const components = {
 		component: 'AdminOnly',
 		url: '/admin-only',
 		title: 'Admin Only',
+		tip: 'Admin Only',
 		icon: 'menu',
 		module: 1
 	},
@@ -11,6 +12,7 @@ const components = {
 		component: 'Users',
 		url: '/users',
 		title: 'Users',
+		tip: 'for all but not public users',
 		icon: 'menu',
 		module: 1
 	},
@@ -18,6 +20,7 @@ const components = {
 		component: 'Dashboard',
 		url: '/dashboard',
 		title: 'Dashboard',
+		tip: 'for all but not public users',
 		icon: 'menu',
 		module: 1
 	},
@@ -25,6 +28,8 @@ const components = {
 		component: 'Manager',
 		url: '/manager',
 		title: 'Manager',
+		tip: 'for management only',
+		notAdmin: true,
 		icon: 'menu',
 		module: 1
 	},
@@ -32,20 +37,24 @@ const components = {
 		component: 'Customers',
 		url: '/customers',
 		title: 'Customers',
+		tip: 'for customers and managers only',
+		notAdmin: true,
 		icon: 'menu',
 		module: 1
 	},
 	service1: {
 		component: 'Service1',
 		url: '/service1',
-		title: 'Service1',
+		tip: 'for manager only',
+		title: 'Service1(m)',
 		icon: 'menu',
 		module: 1
 	},
 	service2: {
 		component: 'Service2',
 		url: '/service2',
-		title: 'Service2',
+		title: 'Service2(c)',
+		tip: 'for customers only',
 		icon: 'menu',
 		module: 1
 	}
@@ -63,19 +72,22 @@ const modules = {
 // component's access to roles.
 const rolesConfig = {
 	admin: {
-		routes: [...Object.values(components)]
+		routes: [
+			...Object.values(components).filter((routes) => {
+				return !routes.notAdmin;
+			})
+		]
 	},
 	manager: {
 		routes: [
 			components.dashboard,
 			components.manager,
 			components.customers,
-			components.service1,
-			components.service2
+			components.service1
 		]
 	},
 	customer: {
-		routes: [components.service1, components.service2]
+		routes: [components.users, components.service2]
 	},
 	common: {
 		routes: [
