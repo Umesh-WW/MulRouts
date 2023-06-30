@@ -10,7 +10,7 @@
     "react-bootstrap": "^1.0.0-beta.10",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,11 +37,11 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@storybook/addon-actions": "^5.2.1",
-    "@storybook/addon-links": "^5.2.1",
-    "@storybook/addons": "^5.2.1",
-    "@storybook/react": "^5.2.1",
+    "@babel/core": "7.0.24",
+    "@storybook/addon-actions": "^7.0.24",
+    "@storybook/addon-links": "^7.0.24",
+    "@storybook/addons": "^7.0.24",
+    "@storybook/react": "^7.0.24",
     "prettier": "^1.18.2"
   }
 }
