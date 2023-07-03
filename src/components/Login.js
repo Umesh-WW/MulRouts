@@ -32,6 +32,7 @@ class Login extends Component {
 						value={this.state.selected}
 						onChange={this.handleChange}
 						multiple
+                        style={{ overflow: "hidden", scrollbarWidth: "none" }}
 					>
 						<option value="admin">Admin</option>
 						<option value="manager">Manager</option>

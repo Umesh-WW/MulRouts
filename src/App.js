@@ -17,7 +17,7 @@ class App extends Component {
 		return (
 			<Container fluid>
 				<Row>
-					<Col>
+					<Col style={{ padding: 0 }}>
 						<Router history={history}>
 							<Switch>
 								<Route path="/app" component={PrivateRoutes} />
