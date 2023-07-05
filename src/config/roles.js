@@ -106,7 +106,8 @@ const rolesConfig = {
 				module: 1
 			}
 		]
-	}
+	},
+	All: Object.values(components).map((routes) => routes.url)
 };
 
 export { modules, rolesConfig };
