@@ -5,6 +5,7 @@ import { rolesConfig } from '../config/roles';
 import * as Routes from './index';
 import Navigation from '../components/Navigation';
 import NotFound from '../components/NotFound';
+import NotAuthorized from '../components/NotAuthorized';
 
 class PrivateRoutes extends Component {
 	state = { allowedRoutes: [] };
@@ -31,6 +32,11 @@ class PrivateRoutes extends Component {
 	}
 
 	render() {
+		console.log(
+			'first	rolesConfig.All.includes(window.location.pathname)',
+			rolesConfig.All,
+			window.location.pathname
+		);
 		return (
 			<Fragment>
 				<Navigation
@@ -46,7 +52,14 @@ class PrivateRoutes extends Component {
 							path={`${this.props.match.path}${route.url}`}
 						/>
 					))}
-					<Route component={NotFound} />
+					<Route
+						path="*"
+						component={
+							rolesConfig.All.includes(window.location.pathname.slice(4))
+								? NotAuthorized
+								: NotFound
+						}
+					/>
 				</Switch>
 			</Fragment>
 		);
